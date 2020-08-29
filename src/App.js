@@ -76,7 +76,7 @@ function App() {
   return (
     
     <main className='container'>
-      <p className='app-title'> Todos App  GTek-Solutions</p>
+     
     <div className='flex-row'>
       
         {edit?
@@ -93,14 +93,14 @@ function App() {
          )
         }
 
-      <div className="flex-large">
+      {/* <div className="flex-large"> */}
        
           {isLoading?(<div>Loading data</div>):
          (
            <TodosTable   todos={todos} setEditMode={setEditMode} deleteTodo={deleteTodo} edit={edit} cancelEditMode={cancelEditMode}/>)
          }
            
-      </div>
+      {/* </div> */}
     </div>
    
     </main>
