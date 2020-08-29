@@ -6,7 +6,7 @@ import EditTodoForm from './components/EditTodoForm';
 import todosdata from './data/todos.json';
 import './App.css';
 function App() {
-  const remotebaseUrl="https://cloud-tek-api.herokuapp.com/api/stripe/coupons";
+  const remotebaseUrl="https://gtecktodoapi.herokuapp.com/api/todos";
   const localbaseUrl="http://localhost:8080/api/todos/";
   const [isLoading,setIsLoading]=React.useState(true);
   const [edit,setEdit]=React.useState(false);
@@ -23,7 +23,7 @@ function App() {
  const getTodos=()=>{
    setIsLoading(true);
    
-   axios.get(localbaseUrl).then(result=>{
+   axios.get(remotebaseUrl).then(result=>{
     
      const data=result.data.data;
 
@@ -34,7 +34,7 @@ function App() {
   const addTodo=(new_todo)=>{
   
     console.log("new_todo:"+JSON.stringify(new_todo));
-    axios.post(localbaseUrl,new_todo).then(todo=>{
+    axios.post(remotebaseUrl,new_todo).then(todo=>{
       console.log("Todo is save successfully ...");
     getTodos();
    }).catch(err=>{
@@ -53,7 +53,7 @@ function App() {
   };
  const deleteTodo=(id)=>{
   
-  axios.delete(localbaseUrl+id).then((deltetedCoupon)=>{
+  axios.delete(remotebaseUrl+id).then((deltetedCoupon)=>{
     getTodos();
    }).catch((err)=>{
     getTodos();
@@ -62,7 +62,7 @@ function App() {
  };
  const updateTodo=(new_todo)=>{
    console.log("updateTodo is get called");
-   axios.put(localbaseUrl,new_todo)
+   axios.put(remotebaseUrl,new_todo)
    .then(uddatedTodo=>{
     
     getTodos();
